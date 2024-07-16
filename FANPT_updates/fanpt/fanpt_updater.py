@@ -283,7 +283,7 @@ class FANPTUpdater:
             resp_matrix[o - 1] = self.solver(self.fanpt_container.c_matrix, constant_terms)[0]
         self.responses = resp_matrix
         #print("response_matrix",self.responses)
-        #print("length of response matrix",self.responses.shape) 
+        #print("length of response matrix",self.responses.shape)
     def params_updater(self):
         r"""Update the wavefunction parameters with the new responses up to the given value of
         final_lambda.
@@ -340,7 +340,7 @@ class FANPTUpdater:
             self.fanpt_container.ham1, self.fanpt_container.ham0, self.final_l, 1 - self.final_l
         )
         new_ham_op = pyci.sparse_op(
-            new_ham, self.fanpt_container.fanci_wfn.wfn, self.fanpt_container.nproj
+            new_ham, self.fanpt_container.fanci_wfn.wfn, self.fanpt_container.nproj, symmetric=False
         )
         new_ovlp_s = self.fanpt_container.fanci_wfn.compute_overlap(self.new_wfn_params, "S")
         f = np.empty(self.fanpt_container.nproj, dtype=pyci.c_double)
